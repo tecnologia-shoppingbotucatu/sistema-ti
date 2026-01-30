@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema TI
 
-## Getting Started
+Sistema de Gestão de TI baseado em ITIL, desenvolvido com Next.js 16 e Supabase.
 
-First, run the development server:
+## Stack
+
+- **Frontend**: Next.js 16, React 19, TypeScript
+- **Backend**: Supabase (PostgreSQL + Auth + Storage)
+- **UI**: Tailwind CSS 4, shadcn/ui, Radix UI
+- **Deploy**: Vercel (Edge Functions + Cron Jobs)
+
+## Funcionalidades
+
+### ITIL Service Desk
+- **Tickets**: Abertura, acompanhamento e resolução de chamados
+- **Changes**: Gestão de mudanças com workflow de aprovação
+- **Problems**: Análise de causa raiz e gestão de problemas
+
+### Gestão de Ativos
+- Inventário de hardware e software
+- Controle de licenças
+- Histórico de manutenções
+
+### Administração
+- Multi-entidade (filiais/departamentos)
+- RBAC (Role-Based Access Control)
+- Auditoria de ações
+
+## Desenvolvimento
 
 ```bash
+# Instalar dependências
+npm install
+
+# Iniciar servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build para produção
+npm run build
+
+# Lint
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Variáveis de Ambiente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+CRON_SECRET=your_cron_secret
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy na Vercel
 
-## Learn More
+1. Conecte o repositório à Vercel
+2. Configure as variáveis de ambiente
+3. Deploy automático a cada push na main
 
-To learn more about Next.js, take a look at the following resources:
+### Cron Jobs (requer Vercel Pro)
+- `/api/cron/notifications` - A cada 5 minutos
+- `/api/cron/cleanup` - A cada hora
+- `/api/cron/sla` - A cada 10 minutos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Licença
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proprietário - Shopping Botucatu
